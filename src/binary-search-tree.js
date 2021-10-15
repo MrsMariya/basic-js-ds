@@ -41,24 +41,40 @@ function insertNode (Node, newNode) {
   }
 
   has(data) {
-   /*  search = (Node, data) => {
-    if (Node === null) {
-        return null;
-    } else if (data < Node.data) {
-        return search(Node.left, data);
-    } else if (data > Node.data) {
-        return search(Node.right, data);
-    } else {
-        return Node;
+ function hasData(Node) {
+      if (Node === null) {
+        return false;
+      } 
+       if (data === Node.data) {
+        return true;
+      } 
+       if (data > Node.data){
+        return hasData(Node.right)
+      }
+      return hasData(Node.left)
     }
-  }
-   */
+    return hasData(this.Root)
 }
+  
 
-  find(/* data */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
-  }
+  find(data) {
+  function  search (Node, data) {
+      if (Node === null) {
+          return null;
+      }
+       if (data === Node.data) {
+          return Node;
+      } 
+      if (data > Node.data) {
+          return search(Node.right, data);
+      } 
+        return search(Node.left, data);
+      } 
+        return search(this.Root, data)
+      }
+    
+    
+  
 
    remove(data) {
     
